@@ -1,7 +1,7 @@
 import {ROBOT_MOVEMENT_API_URI} from '@/constants/RobotConstants';
 import {Robot} from "@/types/RobotTypes";
 
-export const moveAndRetrieveRobot = async (movementScript: string): Promise<Robot> => {
+export const moveAndRetrieveRobotApi = async (movementScript: string): Promise<Robot> => {
     try {
         const response = await fetch(ROBOT_MOVEMENT_API_URI, {
             method: 'POST',
