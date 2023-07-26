@@ -8,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.logging.Logger;
+
 @RestController
 @RequestMapping("/api/robot")
 public class RobotController {
-
+    Logger logger = Logger.getLogger(RobotController.class.getName());
     private final RobotService robotService;
 
     @Autowired
@@ -24,7 +26,7 @@ public class RobotController {
 
         Robot robot = robotService.moveAndRetrieveRobot(movementSteps);
         if (robot == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "An error occurred while moving robot " + movementSteps);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "An error occurred while moving robot");
         }
         return ResponseEntity.status(HttpStatus.OK).body(robot);
     }

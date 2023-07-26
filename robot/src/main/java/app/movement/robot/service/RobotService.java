@@ -14,16 +14,17 @@ import static app.movement.robot.constants.RobotConstants.GRID_WIDTH;
 
 @Service
 public class RobotService {
-    Logger logger = Logger.getLogger("RobotService");
+    Logger logger = Logger.getLogger(RobotService.class.getName());
 
     public Robot moveAndRetrieveRobot(String movementScript) {
         try (Scanner scanner = new Scanner(movementScript)) {
             String currentPositionCommand = scanner.next();
 
             if (!currentPositionCommand.equals("POSITION")) {
-                logger.log(Level.WARNING, "Couldnt find initial position");
+                logger.log(Level.WARNING, "Couldn't find initial position");
                 return null;
             }
+
             int x = scanner.nextInt();
             int y = scanner.nextInt();
             DirectionEnum direction = DirectionEnum.valueOf(scanner.next());
@@ -32,20 +33,15 @@ public class RobotService {
 
             while (scanner.hasNext()) {
                 CommandEnum command = CommandEnum.valueOf(scanner.next());
-
                 switch (command) {
-                    case FORWARD:
+                    case FORWARD -> {
                         int steps = scanner.nextInt();
                         robot.goForward(steps, GRID_WIDTH, GRID_HEIGHT);
-                        break;
-                    case TURNAROUND:
-                        robot.turnAround();
-                        break;
-                    case RIGHT:
-                        robot.turnRight();
-                        break;
-                    default:
-                        break;
+                    }
+                    case TURNAROUND -> robot.turnAround();
+                    case RIGHT -> robot.turnRight();
+                    default -> {
+                    }
                 }
             }
             return robot;
@@ -54,5 +50,6 @@ public class RobotService {
             return null;
         }
     }
+
 
 }

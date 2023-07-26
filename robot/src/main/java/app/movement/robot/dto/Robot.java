@@ -15,61 +15,49 @@ public class Robot {
 
     public void goForward(int steps, int gridWidth, int gridHeight) {
         switch (direction) {
-            case EAST:
+            case EAST -> {
                 if (x + steps < gridWidth) {
                     x += steps;
                 }
-                break;
-            case WEST:
+            }
+            case WEST -> {
                 if (x - steps >= 0) {
                     x -= steps;
                 }
-                break;
-            case NORTH:
+            }
+            case NORTH -> {
                 if (y - steps >= 0) {
                     y -= steps;
                 }
-                break;
-            case SOUTH:
+            }
+            case SOUTH -> {
                 if (y + steps < gridHeight) {
                     y += steps;
                 }
-                break;
+            }
         }
     }
 
     public void turnAround() {
         switch (direction) {
-            case NORTH:
-                direction = DirectionEnum.SOUTH;
-                break;
-            case SOUTH:
-                direction = DirectionEnum.NORTH;
-                break;
-            case EAST:
-                direction = DirectionEnum.WEST;
-                break;
-            case WEST:
-                direction = DirectionEnum.EAST;
-                break;
+            case NORTH -> direction = DirectionEnum.SOUTH;
+            case SOUTH -> direction = DirectionEnum.NORTH;
+            case EAST -> direction = DirectionEnum.WEST;
+            case WEST -> direction = DirectionEnum.EAST;
         }
     }
 
     public void turnRight() {
         switch (direction) {
-            case NORTH:
-                direction = DirectionEnum.EAST;
-                break;
-            case SOUTH:
-                direction = DirectionEnum.WEST;
-                break;
-            case EAST:
-                direction = DirectionEnum.SOUTH;
-                break;
-            case WEST:
-                direction = DirectionEnum.NORTH;
-                break;
+            case NORTH -> direction = DirectionEnum.EAST;
+            case SOUTH -> direction = DirectionEnum.WEST;
+            case EAST -> direction = DirectionEnum.SOUTH;
+            case WEST -> direction = DirectionEnum.NORTH;
         }
+    }
+
+    public DirectionEnum getDirection() {
+        return direction;
     }
 
     public int getX() {
