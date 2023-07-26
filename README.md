@@ -34,9 +34,9 @@ Frontend should be styled. You could do it yourself or use some framework.
 
 ### Backend
 
-* POSITION must be sent in the script in the first line
-* The robot won't move if the forward commands exceeds grid dimensions
+* POSITION must be sent in the script in the first line, and it's assumed to be x y
 * x is X axis so EAST and WEST movement, and y is Y axis, so North and South
+* The robot won't move if the forward commands exceeds grid dimensions
 * Directions and commands must be sent similar to the ENUMS, otherwise a 400 status code is returned
 
 ### Frontend
