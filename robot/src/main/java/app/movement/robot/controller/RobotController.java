@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/robot")
+@CrossOrigin
 public class RobotController {
     Logger logger = Logger.getLogger(RobotController.class.getName());
     private final RobotService robotService;
