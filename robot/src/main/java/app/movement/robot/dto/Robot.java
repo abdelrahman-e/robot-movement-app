@@ -2,6 +2,8 @@ package app.movement.robot.dto;
 
 import app.movement.robot.enums.DirectionEnum;
 
+import static app.movement.robot.helper.RobotMovementHelper.*;
+
 public class Robot {
     private int x;
     private int y;
@@ -16,22 +18,22 @@ public class Robot {
     public void goForward(int steps, int gridWidth, int gridHeight) {
         switch (direction) {
             case EAST -> {
-                if (x + steps < gridWidth) {
+                if (canMoveEast(x, steps, gridWidth)) {
                     x += steps;
                 }
             }
             case WEST -> {
-                if (x - steps >= 0) {
+                if (canMoveWest(x, steps)) {
                     x -= steps;
                 }
             }
             case NORTH -> {
-                if (y - steps >= 0) {
+                if (canMoveNorth(y, steps)) {
                     y -= steps;
                 }
             }
             case SOUTH -> {
-                if (y + steps < gridHeight) {
+                if (canMoveSouth(y, steps, gridHeight)) {
                     y += steps;
                 }
             }
