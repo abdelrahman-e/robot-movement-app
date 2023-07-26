@@ -23,11 +23,9 @@ describe('TokenPage', () => {
     const movementScriptText = getByTestId('movementScriptText');
     await userEvent.type(movementScriptText, 'FORWARD 3');
 
-    // Submit the form
     const movementScriptButton = getByTestId('movementScriptButton');
     await userEvent.click(movementScriptButton);
 
-    // Assert that the robot position and direction were updated
     expect(screen.getByText(directionToIcon.NORTH)).toBeInTheDocument();
 
     //checks to see that the position is similar to the testid

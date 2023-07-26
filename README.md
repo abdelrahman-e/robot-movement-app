@@ -3,6 +3,9 @@
 ## Assumptions and Info
 
 * Added start.bat and start.sh to start the backend and frontend automatically
+* Can also be started manually by navigating to robot directory and run `.\mvnw spring-boot:run` from Windows terminal,
+  and
+  navigating to robot-ui and `npm start`
 
 ### Backend
 

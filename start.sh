@@ -3,8 +3,6 @@
 cd robot
 # Start the GeneratorService SpringBoot application
 ./mvnw spring-boot:run &
-# Capture the process ID of the GeneratorService application
-ROBOT_PID=$!
 cd ..
 
 
@@ -16,10 +14,6 @@ cd robot-ui
 npm start &
 cd ..
 
-# Set up a trap to kill all processes when the script is closed
-trap "kill ROBOT_PID ; npx kill-port 8080" SIGINT SIGTERM
+# Set up a trap to kill all processes when the script is closed using npx
+trap "npx kill-port 8080 3000" SIGINT SIGTERM
 
-
-
-# Wait for all processes to exit
-wait $GENERATOR_PID
